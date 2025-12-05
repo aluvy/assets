@@ -28,6 +28,10 @@ body {
   background: #444;
 }
 
+.swiper-slide.mobile img {
+  width: 360px;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   position: fixed;
