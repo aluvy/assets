@@ -5,25 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2025-12-kbs-sinkhole</title>
 
-    <base href="/assets" />
+    <script>
+      const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+
+      const base = document.createElement('base');
+      base.href = isLocal
+        ? 'http://localhost:5500/' // 로컬 base URL
+        : 'https://aluvy.github.io/assets/'; // 실제 서버 base URL
+
+      document.head.prepend(base);
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="/js/pp/ui.js"></script>
+    <script src="js/pp/ui.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/pp/style.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/pp/style.css" />
   </head>
   <body>
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="/images/pp/2025-12-kbs-sinkhole-pc-01.png" alt="Sinkhole" /></div>
-        <div class="swiper-slide"><img src="/images/pp/2025-12-kbs-sinkhole-pc-02.png" alt="Sinkhole" /></div>
-        <div class="swiper-slide"><img src="/images/pp/2025-12-kbs-sinkhole-pc-03.png" alt="Sinkhole" /></div>
-        <div class="swiper-slide mobile"><img src="/images/pp/2025-12-kbs-sinkhole-mobile-01.png" alt="Sinkhole" /></div>
-        <div class="swiper-slide mobile"><img src="/images/pp/2025-12-kbs-sinkhole-mobile-02.png" alt="Sinkhole" /></div>
-        <div class="swiper-slide mobile"><img src="/images/pp/2025-12-kbs-sinkhole-mobile-03.png" alt="Sinkhole" /></div>
-        <div class="swiper-slide mobile"><img src="/images/pp/2025-12-kbs-sinkhole-mobile-04.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide"><img src="images/pp/2025-12-kbs-sinkhole-pc-01.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide"><img src="images/pp/2025-12-kbs-sinkhole-pc-02.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide"><img src="images/pp/2025-12-kbs-sinkhole-pc-03.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide mobile"><img src="images/pp/2025-12-kbs-sinkhole-mobile-01.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide mobile"><img src="images/pp/2025-12-kbs-sinkhole-mobile-02.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide mobile"><img src="images/pp/2025-12-kbs-sinkhole-mobile-03.png" alt="Sinkhole" /></div>
+        <div class="swiper-slide mobile"><img src="images/pp/2025-12-kbs-sinkhole-mobile-04.png" alt="Sinkhole" /></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
