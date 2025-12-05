@@ -1,16 +1,16 @@
 const setSwiper = () => {
-  var swiper = new Swiper(".mySwiper", {
+  var swiper = new Swiper('.mySwiper', {
     autoHeight: true,
-    slidesPerView: "auto",
+    slidesPerView: 'auto',
     centeredSlides: true,
     spaceBetween: 30,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
   });
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  setSwiper()
+document.addEventListener('DOMContentLoaded', () => {
+  setSwiper();
 });
