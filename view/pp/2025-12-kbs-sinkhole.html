@@ -1,20 +1,50 @@
 <!doctype html>
 <html lang="ko">
   <head>
+    <script>
+      (function () {
+        var hostname = location.hostname;
+        var isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+
+        var baseHref = isLocal
+          ? 'http://localhost:5500/' // 로컬 주소
+          : 'https://aluvy.github.io/assets/'; // 실제 서버 주소
+
+        // 기존 base 태그가 있으면 재사용, 없으면 새로 생성
+        var baseTag = document.querySelector('base');
+        if (!baseTag) {
+          baseTag = document.createElement('base');
+          // head 의 가장 앞에 넣어서 파싱 초기부터 적용되게
+          document.head.insertBefore(baseTag, document.head.firstChild);
+        }
+        baseTag.href = baseHref;
+
+        // (선택) a, form 의 상대경로를 한번 더 확실하게 절대경로로 치환
+        function absolutize(selector, attr) {
+          var nodes = document.querySelectorAll(selector);
+          nodes.forEach(function (el) {
+            var val = el.getAttribute(attr);
+            if (!val) return;
+
+            // 이미 절대 URL, 루트(/), 해시(#)로 시작하면 건드리지 않기
+            if (/^(https?:)?\/\//.test(val) || val.startsWith('/') || val.startsWith('#')) {
+              return;
+            }
+
+            el.setAttribute(attr, new URL(val, baseHref).href);
+          });
+        }
+
+        // DOM이 만들어진 뒤에 링크/폼 절대경로화
+        window.addEventListener('DOMContentLoaded', function () {
+          absolutize('a[href]', 'href');
+          absolutize('form[action]', 'action');
+        });
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2025-12-kbs-sinkhole</title>
-
-    <script>
-      const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-
-      const base = document.createElement('base');
-      base.href = isLocal
-        ? 'http://localhost:5500/' // 로컬 base URL
-        : 'https://aluvy.github.io/assets/'; // 실제 서버 base URL
-
-      document.head.prepend(base);
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/pp/ui.js"></script>
