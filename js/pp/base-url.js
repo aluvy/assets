@@ -6,7 +6,7 @@
 
   var baseHref = isLocal
     ? '/' // 로컬 주소
-    : '/assets/'; // 실제 서버 주소
+    : '/_assets/'; // 실제 서버 주소
 
   baseTag.href = baseHref;
 })();
